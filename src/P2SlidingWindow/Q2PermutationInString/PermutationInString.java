@@ -9,32 +9,23 @@ public class PermutationInString {
     for (int i = 0; i < s1.length(); i++) {
       s1Map.put(s1.charAt(i), s1Map.getOrDefault(s1.charAt(i), 0) + 1);
     }
+    int windowSize = s1.length();
+    HashMap<Character, Integer> window = new HashMap<>();
+    for (int i = 0; i < s2.length(); i++) {
+      char c = s2.charAt(i);
+      window.put(c, window.getOrDefault(c, 0) + 1);
 
-    int ptr = 0;
-    for (ptr = 0; ptr < s2.length(); ptr++) {
-      if (s1Map.containsKey(s2.charAt(ptr))) {
-        break;
-      }
-    }
-    if (ptr == s2.length()) {
-      return false;
-    }
-
-    int left = ptr;
-    int right = ptr;
-
-    for (; right < s2.length(); right++) {
-      if (s1Map.containsKey(s2.charAt(right))) {
-        while (s2Map.get(s2.charAt(right)) > s1Map.get(s1.charAt(right))) {
-          s2Map.put(s2.charAt(left), s2Map.get(s2.charAt(left)) - 1);
-          left++;
+      if (i >= windowSize) {
+        char leftChar = s2.charAt(i - windowSize);
+        if (window.get(leftChar) == 1) {
+          window.remove(leftChar);
+        }
+        else {
+          window.put(leftChar, window.get(leftChar) - 1);
         }
       }
-      else {
-        if (s1Map.equals(s2Map)) {
-          return true;
-        }
-        s2Map.clear();
+      if (s1Map.equals(window)) {
+        return true;
       }
     }
     return false;
@@ -43,7 +34,11 @@ public class PermutationInString {
   public static void main(String[] args) {
     //    String s1 = "ab", s2 = "eidbaooo";
     //
-    String s1 = "ab", s2 = "eidboaoo";
+    //        String s1 = "ab", s2 = "eidboaoo";
+    //    String s1 = "adc", s2 = "dcda";
+
+    String s1 = "abc", s2 = "cccccbabbbaaaa";
+
     PermutationInString permutationInString = new PermutationInString();
     System.out.println(permutationInString.checkInclusion(s1, s2));
   }
