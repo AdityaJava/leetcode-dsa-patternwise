@@ -1,7 +1,7 @@
-package P2SlidingWindow.Q2PermutationInString;
+package P2SlidingWindow.Q3PermutationInString;
 
 import java.util.HashMap;
-
+//https://leetcode.com/problems/permutation-in-string/description/?envType=problem-list-v2&envId=sliding-window
 public class PermutationInString {
   public boolean checkInclusion(String s1, String s2) {
     HashMap<Character, Integer> s1Map = new HashMap<>();
