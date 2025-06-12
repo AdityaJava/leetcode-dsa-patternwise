@@ -1,5 +1,7 @@
 package P4DFS.Q1PathSum;
 
+import P4DFS.TreeNode;
+
 public class PathSum {
   public boolean hasPathSum(TreeNode root, int targetSum) {
     if (root == null) {
