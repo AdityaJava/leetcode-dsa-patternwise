@@ -27,8 +27,8 @@ public class BinaryTreeMaximumPathSum {
     root.right = new TreeNode(20);
     root.right.left = new TreeNode(15);
     root.right.right = new TreeNode(7);
-    //    TreeNode root = new TreeNode(2);
-    //    root.left = new TreeNode(-1);
+    //    P4DFS.TreeNode root = new P4DFS.TreeNode(2);
+    //    root.left = new P4DFS.TreeNode(-1);
 
     BinaryTreeMaximumPathSum binaryTreeMaximumPathSum = new BinaryTreeMaximumPathSum();
     System.out.println(binaryTreeMaximumPathSum.maxPathSum(root));
