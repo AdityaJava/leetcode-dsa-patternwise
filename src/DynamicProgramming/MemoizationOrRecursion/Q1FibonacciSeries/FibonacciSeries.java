@@ -1,4 +1,4 @@
-package DynamicProgramming.Q1FibonacciSeries;
+package DynamicProgramming.MemoizationOrRecursion.Q1FibonacciSeries;
 
 import java.util.ArrayList;
 import java.util.Collections;
