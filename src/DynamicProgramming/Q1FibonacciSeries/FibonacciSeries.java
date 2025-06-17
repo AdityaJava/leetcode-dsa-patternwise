@@ -6,6 +6,8 @@ import java.util.List;
 
 public class FibonacciSeries {
 
+  // TC is O(N)
+  // SC is O(N) Stack Space + O(N) Array
   private int fibonacci(int n, List<Integer> dp) {
     if (n <= 1) {
       return 1;
