@@ -1,4 +1,4 @@
-package DynamicProgramming.TabulationOrLinear;
+package DynamicProgramming.TabulationOrLinear.Q1FibonacciSeries;
 
 import java.util.ArrayList;
 import java.util.Collections;
