@@ -6,24 +6,30 @@ import java.util.Arrays;
 public class FrogJump {
 
   public int frogJump(int[] heights) {
-    return dfs(heights, 0, 0, 0);
+    int[] minEnergyTillNow = new int[1];
+    minEnergyTillNow[0] = Integer.MAX_VALUE;
+    dfs(heights, 0, 0, 0, minEnergyTillNow);
+    return minEnergyTillNow[0];
   }
 
-  private int dfs(int[] heights, int energyConsumedTillNow, int currentStep, int energyNeeded) {
+  private int dfs(int[] heights, int energyConsumedTillNow, int currentStep, int energyNeeded, int[] minEnergyTillNow) {
     if (currentStep == heights.length - 1) {
-      energyConsumedTillNow += Math.abs(heights[currentStep] - energyNeeded);
+      minEnergyTillNow[0] = Math.min(minEnergyTillNow[0], energyConsumedTillNow);
       return energyConsumedTillNow;
     }
-    int leftEnergyNeeded = 0, rightEnergyNeeded = 0;
     if ((currentStep + 1) < heights.length) {
       energyNeeded = Math.abs(heights[currentStep] - heights[currentStep + 1]);
-      leftEnergyNeeded = dfs(heights, energyConsumedTillNow, currentStep + 1, energyNeeded);
+      energyConsumedTillNow += energyNeeded;
+      dfs(heights, energyConsumedTillNow, currentStep + 1, energyNeeded, minEnergyTillNow);
+      energyConsumedTillNow -= energyNeeded;
     }
     if ((currentStep + 2) < heights.length) {
       energyNeeded = Math.abs(heights[currentStep] - heights[currentStep + 2]);
-      rightEnergyNeeded = dfs(heights, energyConsumedTillNow, currentStep + 2, energyNeeded);
+      energyConsumedTillNow += energyNeeded;
+      dfs(heights, energyConsumedTillNow, currentStep + 2, energyNeeded, minEnergyTillNow);
+      energyConsumedTillNow -= energyNeeded;
     }
-    return Math.min(leftEnergyNeeded, rightEnergyNeeded);
+    return energyConsumedTillNow;
   }
 
   public static void main(String[] args) {
