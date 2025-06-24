@@ -8,28 +8,31 @@ public class FrogJump {
   public int frogJump(int[] heights) {
     int[] minEnergyTillNow = new int[1];
     minEnergyTillNow[0] = Integer.MAX_VALUE;
-    dfs(heights, 0, 0, 0, minEnergyTillNow);
-    return minEnergyTillNow[0];
+    int[] dp = new int[heights.length];
+    Arrays.fill(dp, -1);
+    //dfs(heights, 0, 0, minEnergyTillNow);
+    return dp(heights, 0, dp);
   }
 
-  private int dfs(int[] heights, int energyConsumedTillNow, int currentStep, int energyNeeded, int[] minEnergyTillNow) {
+  private int dp(int[] heights, int currentStep, int[] dp) {
     if (currentStep == heights.length - 1) {
-      minEnergyTillNow[0] = Math.min(minEnergyTillNow[0], energyConsumedTillNow);
-      return energyConsumedTillNow;
+      return 0;
     }
-    if ((currentStep + 1) < heights.length) {
-      energyNeeded = Math.abs(heights[currentStep] - heights[currentStep + 1]);
-      energyConsumedTillNow += energyNeeded;
-      dfs(heights, energyConsumedTillNow, currentStep + 1, energyNeeded, minEnergyTillNow);
-      energyConsumedTillNow -= energyNeeded;
+
+    if (dp[currentStep] != -1) {
+      return dp[currentStep];
     }
-    if ((currentStep + 2) < heights.length) {
-      energyNeeded = Math.abs(heights[currentStep] - heights[currentStep + 2]);
-      energyConsumedTillNow += energyNeeded;
-      dfs(heights, energyConsumedTillNow, currentStep + 2, energyNeeded, minEnergyTillNow);
-      energyConsumedTillNow -= energyNeeded;
+
+    int leftEnergy = Integer.MAX_VALUE, rightEnergy = Integer.MAX_VALUE;
+    if (currentStep + 1 < (heights.length)) {
+      leftEnergy = Math.abs(heights[currentStep] - heights[currentStep + 1]) + dp(heights, currentStep + 1, dp);
     }
-    return energyConsumedTillNow;
+
+    if (currentStep + 2 < (heights.length)) {
+      rightEnergy = Math.abs(heights[currentStep] - heights[currentStep + 2]) + dp(heights, currentStep + 2, dp);
+    }
+    dp[currentStep] = Math.min(leftEnergy, rightEnergy);
+    return dp[currentStep];
   }
 
   public static void main(String[] args) {
