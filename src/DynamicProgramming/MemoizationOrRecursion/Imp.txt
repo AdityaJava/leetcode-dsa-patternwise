@@ -1,0 +1,18 @@
+DP Direction Insight – Top-Down vs Bottom-Up (Frog Jump)
+Top-Down DP is:
+
+Cleaner and more intuitive.
+
+Matches the question naturally:
+➤ “What is the minimum cost to reach the last step?”
+
+You think in terms of:
+➤ “To get to step i, how could I have arrived here at minimum cost?”
+
+Bottom-Up Recursion (0 → n-1):
+
+Possible but not natural for this problem.
+
+Requires exploring all forward paths, which adds complexity.
+
+✅ So for this type of problem, Top-Down DP is the better fit.

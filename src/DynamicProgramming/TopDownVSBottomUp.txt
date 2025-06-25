@@ -1,0 +1,15 @@
+Top-Down = “What is the result?”
+
+You start from the final goal (like reaching the last step) and work backward to ask:
+➤ “What sub-results do I need to compute this result?”
+
+Bottom-Up = “How do I build up to the result?”
+
+You start from the beginning (step 0) and build up layer by layer to reach the final result.
+
+-----------------------------------------------------------------------------------
+Top-Down DP is often more intuitive and easier to implement for problems where you can naturally think in terms of reaching a final goal, like finding the minimum cost to reach the last step.
+Bottom-Up DP is more systematic and can be more efficient in terms of space, but it may not align as naturally with the problem's structure.
+
+Top-Down DP is For Memoization or Recursion:
+Bottom-Up DP is For Tabulation or Iteration:
