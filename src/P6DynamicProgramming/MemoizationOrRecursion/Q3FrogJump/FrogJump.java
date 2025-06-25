@@ -1,4 +1,4 @@
-package DynamicProgramming.MemoizationOrRecursion.Q3FrogJump;
+package P6DynamicProgramming.MemoizationOrRecursion.Q3FrogJump;
 
 import java.util.Arrays;
 

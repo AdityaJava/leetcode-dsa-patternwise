@@ -1,6 +1,4 @@
-package DynamicProgramming.TabulationOrLinear.Q3FrogJump;
-
-import java.util.Arrays;
+package P6DynamicProgramming.TabulationOrLinear.Q3FrogJump;
 
 //https://takeuforward.org/plus/dsa/problems/frog-jump
 public class FrogJump {

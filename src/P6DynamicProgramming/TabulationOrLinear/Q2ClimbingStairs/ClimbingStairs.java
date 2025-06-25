@@ -1,4 +1,4 @@
-package DynamicProgramming.TabulationOrLinear.Q2ClimbingStairs;
+package P6DynamicProgramming.TabulationOrLinear.Q2ClimbingStairs;
 
 public class ClimbingStairs {
   public int climbStairs(int n) {

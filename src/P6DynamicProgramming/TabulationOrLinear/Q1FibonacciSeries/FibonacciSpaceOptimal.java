@@ -1,4 +1,4 @@
-package DynamicProgramming.TabulationOrLinear.Q1FibonacciSeries;
+package P6DynamicProgramming.TabulationOrLinear.Q1FibonacciSeries;
 
 public class FibonacciSpaceOptimal {
   private int fibonacciOptimal(int n) {

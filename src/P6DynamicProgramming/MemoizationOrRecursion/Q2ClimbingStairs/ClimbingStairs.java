@@ -1,4 +1,4 @@
-package DynamicProgramming.MemoizationOrRecursion.Q2ClimbingStairs;
+package P6DynamicProgramming.MemoizationOrRecursion.Q2ClimbingStairs;
 
 import java.util.ArrayList;
 import java.util.Collections;
