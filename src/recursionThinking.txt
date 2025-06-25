@@ -1,0 +1,5 @@
+Many problems can be solved by just asking:
+
+“What is the answer to the smaller subproblem?”
+This recursive mindset leads to very elegant solutions.
+
