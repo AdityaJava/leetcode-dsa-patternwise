@@ -23,7 +23,7 @@ public class RottenOranges {
     //r,l,u,d
     int[] directionX = { 0, 0, -1, 1 };
     int[] directionY = { 1, -1, 0, 0 };
-    int minutes = 0;
+    int minutes = -1;
     while (!queue.isEmpty()) {
       int size = queue.size();
       for (int i = 0; i < size; i++) {
@@ -40,7 +40,7 @@ public class RottenOranges {
       }
       minutes++;
     }
-    return areAllOrangesRotten(grid) ? minutes : -1;
+    return areAllOrangesRotten(grid) ? minutes == -1 ? 0 : minutes : -1;
   }
 
   private boolean areAllOrangesRotten(int[][] grid) {
@@ -72,7 +72,8 @@ public class RottenOranges {
   }
 
   public static void main(String[] args) {
-    int[][] grid = { { 2, 1, 1 }, { 1, 1, 0 }, { 0, 1, 1 } };
+    //    int[][] grid = { { 2, 1, 1 }, { 1, 1, 0 }, { 0, 1, 1 } };
+    int[][] grid = { { 0 } };
     RottenOranges rottenOranges = new RottenOranges();
     System.out.println(rottenOranges.orangesRotting(grid));
   }
