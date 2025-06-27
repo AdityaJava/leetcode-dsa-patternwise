@@ -35,3 +35,13 @@
 - Need fine control over constraints like order, size, or duplication.
 
 → Avoid for-loop recursion in pure DFS/DP problems where structure is already well-defined.
+
+🔁 Core Idea: For-loop Based Backtracking
+We use:
+
+A start index to avoid revisiting previous elements.
+
+A path list to store the current subset.
+
+A result list to store all valid subsets.
+
