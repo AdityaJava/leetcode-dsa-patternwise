@@ -39,17 +39,45 @@ class BlockedPositions {
     blockedDiagonalsNegative.remove(position.row - position.column);
     blockedDiagonalsPositive.remove(position.row + position.column);
   }
+}
 
+class Converter {
+
+  public static List<List<String>> convertToAnswer(List<List<Position>> answers, int n) {
+    List<List<String>> stringAnswers = new ArrayList<>();
+    for (List<Position> answer : answers) {
+      stringAnswers.add(convertToSingleMatrix(answer, n));
+    }
+    return stringAnswers;
+  }
+
+  public static List<String> convertToSingleMatrix(List<Position> answer, int n) {
+    List<String> matrixes = new ArrayList<>();
+    for (int row = 0; row < n; row++) {
+      Position tempPosition = answer.get(row);
+      StringBuilder matrix = new StringBuilder();
+      for (int col = 0; col < n; col++) {
+        if (tempPosition.row == row && tempPosition.column == col) {
+          matrix.append("Q");
+        }
+        else {
+          matrix.append(".");
+        }
+      }
+      matrixes.add(matrix.toString());
+    }
+    return matrixes;
+  }
 }
 
 public class NQueens {
-  public List<List<Position>> solveNQueens(int n) {
+  public List<List<String>> solveNQueens(int n) {
     List<List<Position>> answers = new ArrayList<>();
     List<Position> answer = new ArrayList<>();
     for (int column = 0; column < n; column++) {
       dfs(new Position(0, column), n, answers, answer);
     }
-    return answers;
+    return Converter.convertToAnswer(answers, n);
   }
 
   private boolean dfs(Position position, int n, List<List<Position>> answers, List<Position> answer) {
