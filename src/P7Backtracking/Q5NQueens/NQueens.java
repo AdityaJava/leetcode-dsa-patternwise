@@ -80,10 +80,10 @@ public class NQueens {
     return Converter.convertToAnswer(answers, n);
   }
 
-  private boolean dfs(Position position, int n, List<List<Position>> answers, List<Position> answer) {
+  private void dfs(Position position, int n, List<List<Position>> answers, List<Position> answer) {
     if (answer.size() == n) {
       answers.add(new ArrayList<>(answer));
-      return true;
+      return;
     }
     int row = position.row;
     for (int column = position.column; column < n; column++) {
@@ -91,15 +91,11 @@ public class NQueens {
       if (isPositionValid(newPosition)) {
         answer.add(newPosition);
         BlockedPositions.blockPosition(newPosition);
-        boolean result = dfs(new Position(row + 1, 0), n, answers, answer);
+        dfs(new Position(row + 1, 0), n, answers, answer);
         BlockedPositions.unBlockPosition(newPosition);
         answer.removeLast();
-        if (!result) {
-          return false;
-        }
       }
     }
-    return false;
   }
 
   private boolean isPositionValid(Position position) {
@@ -112,7 +108,8 @@ public class NQueens {
   }
 
   public static void main(String[] args) {
+    int n = 4;
     NQueens nQueens = new NQueens();
-    nQueens.solveNQueens(4).forEach(System.out::println);
+    nQueens.solveNQueens(n).forEach(System.out::println);
   }
 }
