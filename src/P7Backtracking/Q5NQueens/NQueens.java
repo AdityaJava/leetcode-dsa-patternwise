@@ -74,9 +74,7 @@ public class NQueens {
   public List<List<String>> solveNQueens(int n) {
     List<List<Position>> answers = new ArrayList<>();
     List<Position> answer = new ArrayList<>();
-    for (int column = 0; column < n; column++) {
-      dfs(new Position(0, column), n, answers, answer);
-    }
+    dfs(new Position(0, 0), n, answers, answer);
     return Converter.convertToAnswer(answers, n);
   }
 
@@ -108,7 +106,7 @@ public class NQueens {
   }
 
   public static void main(String[] args) {
-    int n = 4;
+    int n = 5;
     NQueens nQueens = new NQueens();
     nQueens.solveNQueens(n).forEach(System.out::println);
   }
