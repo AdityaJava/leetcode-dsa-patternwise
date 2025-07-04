@@ -94,22 +94,6 @@
 
 ---
 
-## Binary Search
-
-**Core Idea:** Divide the search space in half each time to find a target efficiently.
-
-**When to Use:** Sorted arrays or when answer lies in a numeric range.
-
-**Must-Solve Problems:**
-
-- Binary Search
-- Search in Rotated Sorted Array
-- Find Minimum in Rotated Sorted Array
-- Koko Eating Bananas
-- Median of Two Sorted Arrays
-
----
-
 ## Heap / Priority Queue
 
 **Core Idea:** Use a heap to access the smallest or largest element quickly.
@@ -123,6 +107,22 @@
 - Merge K Sorted Lists
 - Find Median from Data Stream
 - Reorganize String
+
+---
+
+## Binary Search
+
+**Core Idea:** Divide the search space in half each time to find a target efficiently.
+
+**When to Use:** Sorted arrays or when answer lies in a numeric range.
+
+**Must-Solve Problems:**
+
+- Binary Search
+- Search in Rotated Sorted Array
+- Find Minimum in Rotated Sorted Array
+- Koko Eating Bananas
+- Median of Two Sorted Arrays
 
 ---
 
