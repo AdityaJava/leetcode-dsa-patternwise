@@ -34,7 +34,7 @@ public class Heapify {
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
             heapify.heapifyToMaxHeap(arr, i);
         }
-        Arrays.stream(arr).forEach(System.out::println);
+        Arrays.stream(arr).forEach(e -> System.out.print(e + ", "));
     }
 
 }
