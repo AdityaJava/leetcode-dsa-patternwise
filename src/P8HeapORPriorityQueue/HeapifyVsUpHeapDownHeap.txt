@@ -1,0 +1,7 @@
+Final Analogy:
+
+Action                                 Method             Use When
+--------------------------------------------------------------------------------
+Build heap from full array at once     heapify()          You have all data upfront
+
+Insert/delete elements one at a time   upHeap / downHeap  You build heap dynamically

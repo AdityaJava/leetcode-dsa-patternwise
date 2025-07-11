@@ -1,9 +1,10 @@
-package P8HeapORPriorityQueue.heapify;
+package P8HeapORPriorityQueue.CreatingHeap.heapify;
 
 import java.util.Arrays;
 
 public class Heapify {
 
+    //This has Time Complexity O(N)
     private void heapifyToMaxHeap(int[] arr, int index) {
         int largestIndex = index;
         int leftChildIndex = 2 * index + 1;
