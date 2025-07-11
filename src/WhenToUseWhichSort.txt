@@ -1,0 +1,84 @@
+
+Sorting Algorithm-wise Usage Guide
+==================================
+
+1. Insertion Sort
+-----------------
+✅ Use when:
+- Array is small
+- Array is almost sorted
+- You want a simple and fast sort for limited data
+
+❌ Avoid when:
+- Array is large (Time complexity is O(n²))
+
+📌 Example:
+- Sorting the hand of cards as you pick them one by one
+- Sorting top 10 game scores
+
+2. Merge Sort
+-------------
+✅ Use when:
+- You need stable sort
+- You’re working with linked lists
+- You want guaranteed O(n log n) even in worst case
+
+❌ Avoid when:
+- Memory is tight (uses O(n) extra space)
+
+📌 Example:
+- Sorting employee records by salary (while preserving joining order)
+- Sorting large linked lists of student marks
+
+3. Quick Sort
+-------------
+✅ Use when:
+- You want best average-case performance
+- Space is limited (it's in-place)
+
+❌ Avoid when:
+- Worst-case matters (sorted or nearly sorted input causes O(n²))
+- You need stable sorting
+
+📌 Example:
+- Sorting large datasets (like DB rows, logs) when performance matters
+- Internal sorting in many libraries (with optimizations)
+
+4. Heap Sort
+------------
+✅ Use when:
+- You want in-place sort
+- You want guaranteed O(n log n) in all cases
+- You want to avoid recursion
+
+❌ Avoid when:
+- You need a stable sort
+- Best-case performance is a priority (slower than QuickSort in practice)
+
+📌 Example:
+- Real-time systems like OS schedulers
+- Embedded systems with tight memory
+
+5. Tim Sort (Hybrid of Merge + Insertion)
+-----------------------------------------
+✅ Use when:
+- You want a stable sort with great performance on real-world data
+- Array is partially sorted
+
+❌ Not ideal for:
+- Systems with extreme space constraints
+
+📌 Example:
+- Used in Java (Arrays.sort for objects) and Python (sorted)
+- Sorting lists of names or emails where some order already exists
+
+6. Selection Sort (for completeness)
+------------------------------------
+✅ Use when:
+- Teaching or learning basic sorting
+
+❌ Avoid in real apps:
+- O(n²), not stable, not efficient
+
+📌 Example:
+- Educational use only; rarely used in real systems

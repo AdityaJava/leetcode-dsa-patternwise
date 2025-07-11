@@ -2,6 +2,37 @@ package P8HeapORPriorityQueue.heapsort;
 
 import java.util.Arrays;
 
+// Note HeapSort is not stable meaning it doesn't maintain order if 2 elements are same
+// Example
+
+/**
+ * Person[] arr = {
+ * new Person("A", 25),
+ * new Person("B", 30),
+ * new Person("C", 25)
+ * };
+ * <p>
+ * If the sort is stable, after sorting by age:
+ * // Sorted (stable)
+ * A (25)
+ * C (25)
+ * B (30)
+ *
+ * <p>
+ * // Sorted (not stable) --> HeapSort can do this so it is unstable
+ * C (25)
+ * A (25)
+ * B (30)
+ * <p>
+ * Now C comes before A, which breaks the original order.
+ *
+ * <p>
+ * Use a stable sort when:
+ * You're sorting based on one field but want to preserve original order based on another.
+ * <p>
+ * E.g., sorting by marks, but keeping original roll number order intact.
+ *
+ */
 public class HeapSort {
 
     void heapSort(int arr[]) {
