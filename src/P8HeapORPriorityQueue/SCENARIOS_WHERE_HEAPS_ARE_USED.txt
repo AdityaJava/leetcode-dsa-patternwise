@@ -1,0 +1,64 @@
+===============================
+✅ SCENARIOS WHERE HEAPS ARE USED
+===============================
+
+1. Find Kth Largest/Smallest Element
+   - Reason: Efficiently maintains top K elements using O(log K) insertions.
+   - Heap Type:
+     - Min Heap (for Kth largest)
+     - Max Heap (for Kth smallest)
+
+2. Priority Queue Implementation
+   - Reason: Always need access to the element with highest/lowest priority in O(1) and insert/delete in O(log N).
+   - Heap Type: Min or Max Heap
+
+3. Heap Sort
+   - Reason: An in-place sorting algorithm with O(N log N) time complexity.
+   - Heap Type: Max Heap (for ascending sort)
+
+4. Scheduling Jobs by Deadline or Priority
+   - Reason: CPU scheduling, task management systems use heaps to always pick the next highest priority task.
+   - Heap Type: Min Heap or Max Heap
+
+5. Dijkstra’s Algorithm (Shortest Path)
+   - Reason: To efficiently extract the next closest node (min distance).
+   - Heap Type: Min Heap
+
+6. A* Algorithm (Pathfinding)
+   - Reason: Heaps prioritize nodes based on cost + heuristic.
+   - Heap Type: Min Heap
+
+7. Median in Data Stream
+   - Reason: Maintain two heaps: max heap (left half), min heap (right half) to get median in O(1).
+   - Heap Type: Min + Max Heap combo
+
+8. Merge K Sorted Lists / Arrays
+   - Reason: Always need the smallest current head among K lists.
+   - Heap Type: Min Heap
+
+9. Top K Frequent Elements
+   - Reason: Maintain a heap of K elements with highest frequency.
+   - Heap Type: Min Heap on frequency
+
+10. Load Balancing / Resource Allocation
+    - Reason: Servers with minimum load are picked using heaps.
+    - Heap Type: Min Heap
+
+===============================
+❌ WHEN NOT TO USE HEAPS
+===============================
+
+1. Need a stable sort
+   - Use Merge Sort instead.
+
+2. Need fast random access
+   - Use Array or HashMap instead.
+
+3. Need full sorting
+   - QuickSort or MergeSort may be faster in practice.
+
+4. Data is almost sorted
+   - Insertion Sort performs better.
+
+5. Frequently updating priorities (e.g., decreaseKey in Dijkstra’s)
+   - Consider Fibonacci Heap or other advanced data structures.
