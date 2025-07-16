@@ -10,24 +10,24 @@ public class KthLargestElementInArray {
     int[] heap = new int[k];
     int heapSize = 0;
     for (int i = 0; i < nums.length; i++) {
-      insertInHeap(heap, heapSize, nums[i]);
-      heapSize++;
+      if (heapSize < heap.length) {
+        insertInHeap(heap, heapSize, nums[i]);
+        heapSize++;
+      }
+      else if (nums[i] > heap[0]) {
+        // Only replace root if nums[i] is bigger than the smallest (heap[0])
+        deleteFromHeap(heap, heapSize - 1);
+        insertInHeap(heap, heapSize - 1, nums[i]);
+      }
     }
     return heap[0];
   }
 
   private void insertInHeap(int[] heap, int heapSize, int element) {
-    if (heapSize == 0) {
-      heap[heapSize] = element;
-      return;
-    }
-    if (heapSize == heap.length) {
-      deleteFromHeap(heap, heapSize);
-    }
     heap[heapSize] = element;
     int temp = heapSize;
     int parent = (temp - 1) / 2;
-    while (heap[parent] > heap[temp]) {
+    while (temp > 0 && heap[parent] > heap[temp]) {
       swap(heap, parent, temp);
       temp = parent;
       parent = (temp - 1) / 2;
@@ -36,7 +36,6 @@ public class KthLargestElementInArray {
 
   private void deleteFromHeap(int[] heap, int heapSize) {
     swap(heap, 0, heapSize);
-    heapSize--;
     heapify(heap, heapSize, 0);
   }
 
@@ -66,8 +65,12 @@ public class KthLargestElementInArray {
   }
 
   public static void main(String[] args) {
-    int[] nums = { 3, 2, 3, 1, 2, 4, 5, 5, 6 };
-    int k = 4;
+    //    int[] nums = { 3, 2, 3, 1, 2, 4, 5, 5, 6 };
+    //    int k = 4;
+
+    int[] nums = { 3, 2, 1, 5, 6, 4 };
+    int k = 2;
+
     KthLargestElementInArray kthLargestElementInArray = new KthLargestElementInArray();
     System.out.println(kthLargestElementInArray.findKthLargest(nums, k));
   }
