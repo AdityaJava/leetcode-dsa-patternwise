@@ -4,6 +4,15 @@ package P8HeapORPriorityQueue.KthLargestElementInArray;
  * Build heap from full array at once	heapify()	You have all data upfront
  * Insert/delete elements one at a time	upHeap / downHeap	You build heap dynamically
  */
+
+/**
+ * 🧠 The Goal:
+ * We want to find the Kth largest element.
+ * To do that, we maintain a min-heap of size k.
+ * That means:
+ *
+ * The smallest of the top k largest elements will be at heap[0].
+ */
 public class KthLargestElementInArray {
 
   public int findKthLargest(int[] nums, int k) {
@@ -14,6 +23,7 @@ public class KthLargestElementInArray {
         insertInHeap(heap, heapSize, nums[i]);
         heapSize++;
       }
+      // Any time we see a number larger than heap[0] (Smallest among all elements in heap), it should replace the root.
       else if (nums[i] > heap[0]) {
         // Only replace root if nums[i] is bigger than the smallest (heap[0])
         deleteFromHeap(heap, heapSize - 1);
