@@ -33,6 +33,7 @@ package P3FastAndSlowPointers.Q2HappyNumber;
  *
  * 1 <= n <= 231 - 1
  */
+
 public class HappyNumber {
   public boolean isHappy(int n) {
     int fast = squareEachDigit(n), slow = n;

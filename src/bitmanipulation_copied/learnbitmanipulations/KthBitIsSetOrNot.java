@@ -1,6 +1,6 @@
 package bitmanipulation_copied.learnbitmanipulations;
 
-import leetcode.bitmanipulation.mustknowtricks.IthBitIsSet;
+import bitmanipulation_copied.mustknowtricks.IthBitIsSet;
 
 /**
  * KthBitIsSetOrNot
