@@ -1,0 +1,13 @@
+1. AND (&)
+
+2. OR (|)
+
+3. XOR (^)
+
+4. Complement (~)
+
+5. Left Shift (<<)
+
+6. Right Shift (>>)
+
+7. Unsigned Right Shift (>>>)

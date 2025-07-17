@@ -1,0 +1,20 @@
+1. Left Shift (<<)
+Syntax: value << positions
+Shifts the bits of value to the left by the specified number of positions.
+Zeros are added to the right.
+The leftmost bits are discarded (overflow).
+Example:
+java
+Copy
+Edit
+int value = 5; // Binary: 00000000 00000000 00000000 00000101
+int result = value << 2; // Binary: 00000000 00000000 00000000 00010100
+System.out.println(result); // Output: 20
+
+
+
+This is similar to (5 * 2^2)
+
+if res = 5 << 3
+
+then res = (5 * (2^3)) = 5 * 8 = 40

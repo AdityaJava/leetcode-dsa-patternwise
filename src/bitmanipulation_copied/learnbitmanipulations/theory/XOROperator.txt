@@ -1,0 +1,3 @@
+Rule for Bitwise XOR:
+If the corresponding bits are different, the result is 1.
+If the corresponding bits are the same, the result is 0.

@@ -1,0 +1,17 @@
+if n &(n-1) = 0 then n is in power of 2
+
+Example
+n=16
+
+which is 1 0 0 0 0
+
+n-1=15
+
+which is 0 1 1 1 1
+
+
+1 0 0 0 0
+&
+0 1 1 1 1
+-----------
+0

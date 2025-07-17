@@ -1,0 +1,16 @@
+In computers, negative integers are typically stored using a method called two's complement
+
+Let's take an example with an 8-bit system to represent the integer -5 in binary.
+
+First, represent the positive integer 5 in binary:
+
+5 in binary (8-bit) is 00000101.
+Invert all the bits:
+
+11111010 (inverted bits of 00000101).
+Add 1 to the result:
+
+11111010 + 1 = 11111011.
+Thus, -5 in two's complement using 8 bits is 11111011.
+
+Note: this 2s compliment only should be taken for calculations

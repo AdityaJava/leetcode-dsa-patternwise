@@ -1,0 +1,14 @@
+Original number: 16
+After right shift by 2: 4
+
+
+this is same as
+
+16/ (2)^2
+
+
+if
+Original number: 16
+After right shift by 3: 2
+
+16/ (2)^3 = 16/8 = 2

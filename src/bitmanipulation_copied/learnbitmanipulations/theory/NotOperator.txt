@@ -1,0 +1,17 @@
+The bitwise NOT operator flips each bit of its operand:
+A 1 becomes 0.
+A 0 becomes 1.
+
+In Java, integers are represented as 32-bit signed values.
+The bitwise NOT operator operates on all 32 bits of the integer.
+Example in Java:
+
+public class BitwiseNotExample {
+    public static void main(String[] args) {
+        int x = 5;
+        int result = ~x;
+        System.out.println("~" + x + " = " + result);
+    }
+}
+OUTPUT
+~5 = -6
