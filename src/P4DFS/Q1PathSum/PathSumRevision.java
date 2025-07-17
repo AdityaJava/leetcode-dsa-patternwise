@@ -2,7 +2,7 @@ package P4DFS.Q1PathSum;
 
 import P4DFS.TreeNode;
 
-public class PathSum2 {
+public class PathSumRevision {
 
   public boolean hasPathSum(TreeNode root, int targetSum) {
     if (root == null) {
@@ -55,7 +55,7 @@ public class PathSum2 {
 
     int targetSum = 28;
 
-    PathSum2 pathSum2 = new PathSum2();
-    System.out.println(pathSum2.hasPathSum(rootNode, targetSum));
+    PathSumRevision pathSumRevision = new PathSumRevision();
+    System.out.println(pathSumRevision.hasPathSum(rootNode, targetSum));
   }
 }
