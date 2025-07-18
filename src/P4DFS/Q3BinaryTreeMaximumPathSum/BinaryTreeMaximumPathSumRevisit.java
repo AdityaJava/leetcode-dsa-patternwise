@@ -1,10 +1,7 @@
 package P4DFS.Q3BinaryTreeMaximumPathSum;
 
-import com.sun.source.tree.Tree;
-
 import P4DFS.TreeNode;
 
-//Not working
 public class BinaryTreeMaximumPathSumRevisit {
   int max = Integer.MIN_VALUE;
 
