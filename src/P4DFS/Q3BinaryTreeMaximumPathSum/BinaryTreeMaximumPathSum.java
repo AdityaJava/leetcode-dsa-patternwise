@@ -1,36 +1,40 @@
 package P4DFS.Q3BinaryTreeMaximumPathSum;
 
+//https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
+
 import P4DFS.TreeNode;
 
 public class BinaryTreeMaximumPathSum {
+  int max = Integer.MIN_VALUE;
+
   public int maxPathSum(TreeNode root) {
-    int[] maxSum = new int[1];
-    maxSum[0] = Integer.MIN_VALUE;
-    recursiveMaxPathSum(root, maxSum);
-    return maxSum[0];
+    recursiveMaxPath(root);
+    return max;
   }
 
-  private int recursiveMaxPathSum(TreeNode node, int[] maxSum) {
+  public int recursiveMaxPath(TreeNode node) {
     if (node == null) {
       return 0;
     }
-    int sum = node.val;
-    sum += recursiveMaxPathSum(node.left, maxSum);
-    sum += recursiveMaxPathSum(node.right, maxSum);
-    maxSum[0] = Math.max(maxSum[0], Math.max(node.val, sum));
-    return sum;
+    int left = Math.max(recursiveMaxPath(node.left), 0);
+    int right = Math.max(recursiveMaxPath(node.right), 0);
+    int max1 = Math.max(left, right);
+    max = Math.max(max, Math.max(node.val + max1, node.val + right + left));
+    return node.val + max1;
   }
 
   public static void main(String[] args) {
-    TreeNode root = new TreeNode(-10);
-    root.left = new TreeNode(9);
-    root.right = new TreeNode(20);
-    root.right.left = new TreeNode(15);
-    root.right.right = new TreeNode(7);
-    //    P4DFS.TreeNode root = new P4DFS.TreeNode(2);
-    //    root.left = new P4DFS.TreeNode(-1);
+    TreeNode root = new TreeNode(1);
+    root.left = new TreeNode(-2);
+    root.right = new TreeNode(3);
 
-    BinaryTreeMaximumPathSum binaryTreeMaximumPathSum = new BinaryTreeMaximumPathSum();
-    System.out.println(binaryTreeMaximumPathSum.maxPathSum(root));
+    //    TreeNode root = new TreeNode(1);
+    //    root.left = new TreeNode(2);
+    //    root.right = new TreeNode(3);
+
+    //    TreeNode root = new TreeNode(-3);
+
+    BinaryTreeMaximumPathSum revisit = new BinaryTreeMaximumPathSum();
+    System.out.println(revisit.maxPathSum(root));
   }
 }
