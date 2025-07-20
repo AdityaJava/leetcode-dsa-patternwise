@@ -25,6 +25,7 @@ public class PerfectSquares {
     return dp[remaining];
   }
 
+
   public static void main(String[] args) {
     PerfectSquares perfectSquares = new PerfectSquares();
     System.out.println(perfectSquares.numSquares(12));
