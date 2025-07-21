@@ -47,6 +47,7 @@ public class PerfectSquaresBFS {
 
           // Since BFS explores level by level, if we reach '9' at a lower level (shorter path), we skip any later occurrences of '9'.
           // For example, if we reach '9' at level 2, we won’t revisit it at level 4 as we already found the shorter path.
+          // Also note dp here acts as visited array
           if (dp[(j * j) + item] == 0) {
             dp[(j * j) + item] = 1;
             queue.add((j * j) + item);
