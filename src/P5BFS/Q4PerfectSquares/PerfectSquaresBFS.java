@@ -26,13 +26,13 @@ import java.util.Queue;
  */
 public class PerfectSquaresBFS {
   public int numSquares(int n) {
-    int[] dp = new int[n + 1];
-    Arrays.fill(dp, -1);
     return bfs(0, n);
   }
 
   private int bfs(int sum, int n) {
     Queue<Integer> queue = new LinkedList<>();
+    int[] dp = new int[n + 1];
+    Arrays.fill(dp, 0);
     queue.add(sum);
     int height = 0;
     while (!queue.isEmpty()) {
@@ -44,7 +44,12 @@ public class PerfectSquaresBFS {
           if ((j * j) + item == n) {
             return height;
           }
-          queue.add((j * j) + item);
+
+          // We know that BFS goes height after
+          if (dp[(j * j) + item] == 0) {
+            dp[(j * j) + item] = 1;
+            queue.add((j * j) + item);
+          }
         }
       }
     }
