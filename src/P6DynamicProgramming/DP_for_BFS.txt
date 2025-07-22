@@ -14,6 +14,7 @@ While this is true, it's only PART of what DP can do.
 ✅ 1. Avoid Recomputing:
 If we’ve already computed a value (e.g. dp[12] = 3), we should not compute it again.
 → This saves unnecessary work.
+-> This is like visiting a node in BFS/DFS only once.
 
 ✅ 2. Prune the Search Space:
 We avoid exploring a path if it can’t lead to a better result.
