@@ -15,14 +15,24 @@ public class FrogJumpLeetCode {
     if (currentStep == lastStep) {
       return true;
     }
-    if ((stepCount - 1) > 0) {
-      dfs(stoneSet, stepCount - 1, currentStep + (stepCount - 1), lastStep);
+    boolean result = false;
+    if ((stepCount - 1) > 0 && stoneSet.contains(currentStep + (stepCount - 1))) {
+      result = dfs(stoneSet, stepCount - 1, currentStep + (stepCount - 1), lastStep);
+      if (result) {
+        return true;
+      }
     }
     if (stoneSet.contains(currentStep + stepCount)) {
-      dfs(stoneSet, stepCount, currentStep + stepCount, lastStep);
+      result = dfs(stoneSet, stepCount, currentStep + stepCount, lastStep);
+      if (result) {
+        return true;
+      }
     }
     if (stoneSet.contains(currentStep + stepCount + 1)) {
-      dfs(stoneSet, stepCount + 1, currentStep + stepCount + 1, lastStep);
+      result = dfs(stoneSet, stepCount + 1, currentStep + stepCount + 1, lastStep);
+      if (result) {
+        return true;
+      }
     }
     return false;
   }
