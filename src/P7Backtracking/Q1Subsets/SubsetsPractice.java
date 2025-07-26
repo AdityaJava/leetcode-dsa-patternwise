@@ -12,15 +12,12 @@ public class SubsetsPractice {
   }
 
   private void dfs(int[] nums, int index, List<List<Integer>> answers, List<Integer> answer) {
-    if (index >= nums.length) {
-      return;
-    }
-    answer.add(nums[index]);
     answers.add(new ArrayList<>(answer));
     for (int i = index; i < nums.length; i++) {
+      answer.add(nums[i]);
       dfs(nums, i + 1, answers, answer);
+      answer.removeLast();
     }
-    answer.removeLast();
   }
 
   public static void main(String[] args) {
