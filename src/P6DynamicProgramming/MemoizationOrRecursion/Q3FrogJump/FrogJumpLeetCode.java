@@ -16,7 +16,7 @@ public class FrogJumpLeetCode {
     }
     Set<Integer> stoneSet = Arrays.stream(stones).boxed().collect(Collectors.toSet());
     Map<String, Boolean> dp = new HashMap<>();
-    return dfs(stoneSet, 1, stones[1], stones[stones.length - 1], dp);
+    return dfsCodeRefined(stoneSet, 1, stones[1], stones[stones.length - 1], dp);
   }
 
   private boolean dfs(Set<Integer> stoneSet, int stepCount, int currentStep, int lastStep, Map<String, Boolean> dp) {
@@ -52,6 +52,44 @@ public class FrogJumpLeetCode {
     dp.put(key, false);
     return false;
   }
+
+  private boolean dfsCodeRefined(
+    Set<Integer> stoneSet,
+    int stepCount,
+    int currentStep,
+    int lastStep,
+    Map<String, Boolean> dp
+  ) {
+    String key = stepCount + "" + currentStep;
+    if (dp.containsKey(key)) {
+      return dp.get(key);
+    }
+    if (currentStep == lastStep) {
+      return true;
+    }
+    boolean result;
+    //@formatter:off
+    if ((stepCount - 1) > 0
+      && stoneSet.contains(currentStep + (stepCount - 1))
+      && dfsCodeRefined(stoneSet, stepCount - 1, currentStep + (stepCount - 1), lastStep, dp)) {
+        dp.put(key, true);
+        return true;
+    }
+    if (stoneSet.contains(currentStep + stepCount)
+      && dfsCodeRefined(stoneSet, stepCount, currentStep + stepCount, lastStep, dp)) {
+        dp.put(key, true);
+        return true;
+    }
+    if (stoneSet.contains(currentStep + stepCount + 1)
+      && dfsCodeRefined(stoneSet, stepCount + 1, currentStep + stepCount + 1, lastStep, dp)) {
+        dp.put(key, true);
+        return true;
+    }
+    //@formatter:on
+    dp.put(key, false);
+    return false;
+  }
+
 
   public static void main(String[] args) {
     //    int[] stones = { 0, 1, 3, 5, 6, 8, 12, 17 };
