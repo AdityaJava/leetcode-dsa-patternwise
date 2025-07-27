@@ -3,6 +3,9 @@ package P7Backtracking.Q1Subsets;
 import java.util.ArrayList;
 import java.util.List;
 
+// This generates all subsets (the power set) of the given array.
+// Note: This includes all combinations of size 0 to n (i.e., C(n, 0) to C(n, n)).
+// To generate combinations of a specific size k, add a condition: if (answer.size() == k).
 public class SubsetsPractice {
   public List<List<Integer>> subsets(int[] nums) {
     List<List<Integer>> answers = new ArrayList<>();

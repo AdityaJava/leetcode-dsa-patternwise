@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+//https://leetcode.com/problems/permutations/description/
 public class PermutationsFaster {
   public List<List<Integer>> permute(int[] nums) {
     List<List<Integer>> answers = new ArrayList<>();
