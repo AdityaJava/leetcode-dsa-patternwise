@@ -1,0 +1,15 @@
+---------------------------------------------------------------------------
+| Heap Type         | Processing Rule                                  | End State Property                                          | Common Use Cases                             |
+---------------------------------------------------------------------------
+| Min Heap (size K) | Push element; if size > K, pop smallest           | Contains largest K elements; root = smallest among them     | Kth Largest, Top K Frequent, Streaming Top K |
+---------------------------------------------------------------------------
+| Max Heap (size K) | Push element; if size > K, pop largest            | Contains smallest K elements; root = largest among them     | Kth Smallest, K Closest Points, K Smallest   |
+---------------------------------------------------------------------------
+| Min Heap (all)    | Push all; pop root repeatedly                    | Pops in ascending order                                     | Heap Sort, Merge K Lists, External Sort      |
+---------------------------------------------------------------------------
+| Max Heap (all)    | Push all; pop root repeatedly                    | Pops in descending order                                    | Heap Sort Desc, Get Largest Elements         |
+---------------------------------------------------------------------------
+| Min Heap (dynamic)| Push candidates; pop smallest each time          | Root = next smallest available at any point                 | Dijkstra’s, Prim’s, Merge K Arrays           |
+---------------------------------------------------------------------------
+| Max Heap (dynamic)| Push candidates; pop largest each time           | Root = next largest available at any point                  | Greedy largest-first tasks, Stone games      |
+---------------------------------------------------------------------------
