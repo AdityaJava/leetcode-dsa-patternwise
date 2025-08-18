@@ -1,0 +1,88 @@
+===========================
+ Two Pointers Technique
+===========================
+
+When to Use:
+- Problems where the array/list is sorted (or can be sorted) and you need to find:
+  • A pair or triplet with some condition (like sum = target).
+  • Indexes moving toward each other (e.g., left → right, right → left).
+  • Problems involving removal, partition, merging.
+  • Problems where you can reduce the search space by moving pointers smartly instead of brute force checking all pairs.
+
+Common Problem Types:
+1) Pair Sum Problems
+   Example: "Find if there exists a pair whose sum = target in a sorted array."
+   Idea: Start with left = 0 and right = n-1. Move pointers based on sum.
+
+2) Sorted Array Merging
+   Example: Merge two sorted arrays.
+   Use two pointers, one for each array, and pick smaller elements.
+
+3) Removing Duplicates / Partitioning
+   Example: Remove duplicates from sorted array (Leetcode 26).
+   Maintain two pointers: one for slow insert position, one for traversal.
+
+4) Palindrome Checking
+   Example: Check if a string is palindrome.
+   Compare left and right, move toward center.
+
+
+===========================
+ Sliding Window Technique
+===========================
+
+When to Use:
+- Problems where you need to consider subarrays/substrings (continuous segments).
+- You’re asked about:
+  • Maximum / Minimum sum of a subarray of size K.
+  • Longest/Shortest substring with some property (e.g., no repeating characters, at most K distinct).
+  • Dynamic constraints where window grows/shrinks.
+
+Common Problem Types:
+1) Fixed Window Size
+   Example: "Find maximum sum of any subarray of size K."
+   Use a sliding window of size K → move right pointer, drop left pointer.
+
+2) Variable Window Size (Shrink/Grow)
+   Example: "Find the longest substring without repeating characters."
+   Expand right until invalid, shrink left until valid, track max.
+
+3) Counting Problems
+   Example: "Find count of substrings with at most K distinct characters."
+   Expand and shrink dynamically.
+
+
+===========================
+ How to Recognize
+===========================
+
+👉 Ask yourself:
+- Am I working with pairs/triplets and sorted input?
+  → Use Two Pointers.
+
+- Am I asked about subarrays/substrings (continuous segment)?
+  → Use Sliding Window.
+
+- Does window need to grow/shrink dynamically based on a condition?
+  → Sliding Window (variable size).
+
+- Do I just need to fix a window of size K?
+  → Sliding Window (fixed size).
+
+- Do I only care about 2 indices moving toward each other?
+  → Two Pointers.
+
+
+===========================
+ Summary Table
+===========================
+
+Pattern                   | Use When…                                    | Example Problem
+---------------------------------------------------------------------------------------------------
+Two Pointers              | Sorted arrays/strings, pair/triplet search,  | Pair sum in sorted array,
+                          | merging, partitioning                        | palindrome check
+---------------------------------------------------------------------------------------------------
+Sliding Window (Fixed)    | Subarray/substring of size K                 | Max sum subarray of size K
+---------------------------------------------------------------------------------------------------
+Sliding Window (Variable) | Longest/shortest substring with condition    | Longest substring without
+                          |                                              | repeating characters
