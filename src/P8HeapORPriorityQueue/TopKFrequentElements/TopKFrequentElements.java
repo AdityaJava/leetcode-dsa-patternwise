@@ -112,6 +112,7 @@ public class TopKFrequentElements {
         }
       }
     }
+    return Arrays.stream(minHeapClass.minHeap).sequential().map(mh -> mh.num).collect(Collectors.toList()).toArray();
   }
 
   private List<MinHeapClass.Entry> getEntryList(int[] nums) {
