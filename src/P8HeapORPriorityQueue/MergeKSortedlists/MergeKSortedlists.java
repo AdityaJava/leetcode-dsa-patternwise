@@ -12,15 +12,6 @@ class MinHeap {
     heap = new ListNode[capacity];
   }
 
-  //  public void insert(ListNode node) {
-  //    if (size < capacity) {
-  //      insert(node, size++);
-  //    }
-  //    else {
-  //
-  //    }
-  //  }
-
   public void insert(ListNode node, int nodeIndex) {
     heap[size] = node;
     int tempIndex = nodeIndex;
@@ -73,8 +64,9 @@ class MinHeap {
 
 public class MergeKSortedlists {
   public ListNode mergeKLists(ListNode[] lists) {
-    ListNode temp = null;
-    ListNode head = null;
+    ListNode head = new ListNode(-99);
+    ListNode temp = head;
+
     MinHeap minHeap = new MinHeap(lists.length);
     int i = 0;
     for (ListNode node : lists) {
@@ -83,7 +75,7 @@ public class MergeKSortedlists {
     }
     while (!minHeap.isEmpty()) {
       ListNode node = minHeap.delete();
-      if (head == null) {
+      if (head.val == -99) {
         temp = node;
         head = node;
       }
@@ -110,6 +102,7 @@ public class MergeKSortedlists {
     ListNode l3 = new ListNode(2, new ListNode(6));
 
     // Put them in an array for processing
+    //    ListNode[] lists = new ListNode[] { l1, l2, l3 };
     ListNode[] lists = new ListNode[] { l1, l2, l3 };
 
     MergeKSortedlists mergeKSortedlists = new MergeKSortedlists();
