@@ -45,10 +45,7 @@ class MinHeapClass {
     int tempPosition = size;
     int parent = (tempPosition - 1) / 2;
     while (tempPosition != 0 && minHeap[parent].frequency > minHeap[tempPosition].frequency) {
-      swap(
-        tempPosition,
-        parent
-      );
+      swap(tempPosition, parent);
       tempPosition = parent;
       parent = (tempPosition - 1) / 2;
     }
@@ -57,10 +54,7 @@ class MinHeapClass {
 
   public void delete() {
     size--;
-    swap(
-      0,
-      size
-    );
+    swap(0, size);
     heapify(0);
   }
 
@@ -76,10 +70,7 @@ class MinHeapClass {
       smallestElementIndex = rightChildIndex;
     }
     if (smallestElementIndex != index) {
-      swap(
-        smallestElementIndex,
-        index
-      );
+      swap(smallestElementIndex, index);
       heapify(smallestElementIndex);
     }
   }
@@ -112,20 +103,17 @@ public class TopKFrequentElements {
         }
       }
     }
-    return Arrays.stream(minHeapClass.minHeap).sequential().map(mh -> mh.num).collect(Collectors.toList()).toArray();
+    return Arrays.stream(minHeapClass.minHeap).map(m -> m.num).mapToInt(Integer::intValue).toArray();
   }
 
   private List<MinHeapClass.Entry> getEntryList(int[] nums) {
-    Map<Integer, Long> numToFrequency = Arrays.stream(nums).boxed().collect(Collectors.groupingBy(
-      Function.identity(),
-      Collectors.counting()
-    ));
+    Map<Integer, Long> numToFrequency = Arrays
+      .stream(nums)
+      .boxed()
+      .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     List<MinHeapClass.Entry> entryList = new ArrayList<>();
     for (Map.Entry<Integer, Long> entry : numToFrequency.entrySet()) {
-      entryList.add(new MinHeapClass.Entry(
-        entry.getKey(),
-        entry.getValue()
-      ));
+      entryList.add(new MinHeapClass.Entry(entry.getKey(), entry.getValue()));
     }
     return entryList;
   }
@@ -135,7 +123,7 @@ public class TopKFrequentElements {
     MinHeapClass minHeapClass = new MinHeapClass(k);
     int[] nums = { 10, 8, 6, 4, 5, 3 };
     for (int num : nums) {
-      minHeapClass.insert(num);
+      //      minHeapClass.insert(num);
     }
     minHeapClass.print();
   }
