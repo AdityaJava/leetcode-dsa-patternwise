@@ -9,6 +9,7 @@ class MinHeap {
 
   public MinHeap(int capacity) {
     this.capacity = capacity;
+    heap = new ListNode[capacity];
   }
 
   //  public void insert(ListNode node) {
@@ -21,10 +22,11 @@ class MinHeap {
   //  }
 
   public void insert(ListNode node, int nodeIndex) {
+    heap[size] = node;
     int tempIndex = nodeIndex;
     int parentIndex = (tempIndex - 1) / 2;
     ListNode parent = heap[parentIndex];
-    while (parent.val > node.val) {
+    while (tempIndex != 0 && parent.val > node.val) {
       swap(tempIndex, parentIndex);
       tempIndex = parentIndex;
       parentIndex = (tempIndex + 1) / 2;
@@ -34,9 +36,9 @@ class MinHeap {
   }
 
   public ListNode delete() {
+    size--;
     ListNode node = heap[0];
     swap(0, size);
-    size--;
     heapify(0);
     return node;
   }
@@ -64,7 +66,7 @@ class MinHeap {
   }
 
   public boolean isEmpty() {
-    return size > 0;
+    return size <= 0;
   }
 
 }
@@ -96,6 +98,27 @@ public class MergeKSortedlists {
       }
     }
     return head;
+  }
+
+  public static void main(String[] args) {
+    ListNode l1 = new ListNode(1, new ListNode(4, new ListNode(5)));
+
+    // Second linked list: 1 -> 3 -> 4
+    ListNode l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+
+    // Third linked list: 2 -> 6
+    ListNode l3 = new ListNode(2, new ListNode(6));
+
+    // Put them in an array for processing
+    ListNode[] lists = new ListNode[] { l1, l2, l3 };
+
+    MergeKSortedlists mergeKSortedlists = new MergeKSortedlists();
+    ListNode node = mergeKSortedlists.mergeKLists(lists);
+
+    while (node.next != null) {
+      System.out.println(node.val);
+      node = node.next;
+    }
   }
 
 }
