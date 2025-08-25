@@ -12,15 +12,15 @@ class MinHeap {
     heap = new ListNode[capacity];
   }
 
-  public void insert(ListNode node, int nodeIndex) {
+  public void insert(ListNode node) {
     heap[size] = node;
-    int tempIndex = nodeIndex;
+    int tempIndex = size;
     int parentIndex = (tempIndex - 1) / 2;
     ListNode parent = heap[parentIndex];
     while (tempIndex != 0 && parent.val > node.val) {
       swap(tempIndex, parentIndex);
       tempIndex = parentIndex;
-      parentIndex = (tempIndex + 1) / 2;
+      parentIndex = (tempIndex - 1) / 2;
       parent = heap[parentIndex];
     }
     size++;
@@ -72,11 +72,10 @@ public class MergeKSortedlists {
     ListNode temp = head;
 
     MinHeap minHeap = new MinHeap(lists.length);
-    int i = 0;
+
     for (ListNode node : lists) {
       if (node != null) {
-        minHeap.insert(node, i);
-        i++;
+        minHeap.insert(node);
       }
     }
     if (minHeap.isEmpty()) {
@@ -93,35 +92,51 @@ public class MergeKSortedlists {
         temp.next = node;
         temp = temp.next;
       }
-      i--;
       if (node.next != null) {
-        minHeap.insert(node.next, i);
-        i++;
+        minHeap.insert(node.next);
       }
     }
     return head;
   }
 
   public static void main(String[] args) {
-    ListNode l1 = new ListNode(1, new ListNode(4, new ListNode(5)));
+    int[][] input = {
+      { -8, -7, -7, -5, 1, 1, 3, 4 }, { -2 }, { -10, -10, -7, 0, 1, 3 }, { 2 }
+    };
 
-    // Second linked list: 1 -> 3 -> 4
-    ListNode l2 = new ListNode(1, new ListNode(3, new ListNode(4)));
-
-    // Third linked list: 2 -> 6
-    ListNode l3 = new ListNode(2, new ListNode(6));
-
-    // Put them in an array for processing
-    //    ListNode[] lists = new ListNode[] { l1, l2, l3 };
-    ListNode[] lists = new ListNode[] { null };
-
+    // Convert each array into a linked list
+    ListNode[] lists = new ListNode[input.length];
+    for (int i = 0; i < input.length; i++) {
+      lists[i] = createLinkedList(input[i]);
+    }
     MergeKSortedlists mergeKSortedlists = new MergeKSortedlists();
     ListNode node = mergeKSortedlists.mergeKLists(lists);
-
-    while (node.next != null) {
-      System.out.println(node.val);
-      node = node.next;
-    }
+    printList(node);
   }
+
+  private static ListNode createLinkedList(int[] arr) {
+    if (arr.length == 0) {
+      return null;
+    }
+
+    ListNode head = new ListNode(arr[0]);
+    ListNode current = head;
+
+    for (int i = 1; i < arr.length; i++) {
+      current.next = new ListNode(arr[i]);
+      current = current.next;
+    }
+    return head;
+  }
+
+  private static void printList(ListNode head) {
+    ListNode curr = head;
+    while (curr != null) {
+      System.out.print(curr.val + " -> ");
+      curr = curr.next;
+    }
+    System.out.println("null");
+  }
+
 
 }
