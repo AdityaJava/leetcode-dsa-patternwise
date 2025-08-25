@@ -109,6 +109,21 @@
 - Reorganize String
 
 ---
+## Greedy Algorithms
+
+**Core Idea:** Always choose the local optimal solution hoping it leads to global optimum.
+
+**When to Use:** When you can make a series of decisions greedily.
+
+**Must-Solve Problems:**
+
+- Jump Game
+- Greedy Florist
+- Activity Selection
+- Minimum Number of Arrows to Burst Balloons
+- Candy
+
+---
 
 ## Binary Search
 
@@ -123,22 +138,6 @@
 - Find Minimum in Rotated Sorted Array
 - Koko Eating Bananas
 - Median of Two Sorted Arrays
-
----
-
-## Greedy Algorithms
-
-**Core Idea:** Always choose the local optimal solution hoping it leads to global optimum.
-
-**When to Use:** When you can make a series of decisions greedily.
-
-**Must-Solve Problems:**
-
-- Jump Game
-- Greedy Florist
-- Activity Selection
-- Minimum Number of Arrows to Burst Balloons
-- Candy
 
 ---
 
