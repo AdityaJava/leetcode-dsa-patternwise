@@ -123,6 +123,20 @@
 - Minimum Number of Arrows to Burst Balloons
 - Candy
 
+# What is a Greedy Algorithm?
+
+A **Greedy Algorithm** builds a solution step-by-step, always choosing the **locally optimal** choice at each step, **hoping** it leads to the **global optimum**.
+
+## Key Points about Greedy:
+- It makes the **best possible decision at the current step** without worrying about future consequences.
+- **Does not backtrack.**
+- Works only when **local optimal choices lead to global optimal solutions** (not always true).
+
+### Examples in real life:
+- Choosing the largest denomination while giving change.
+- Selecting the next closest city in the Traveling Salesman (though not always optimal).
+
+
 ---
 
 ## Binary Search
