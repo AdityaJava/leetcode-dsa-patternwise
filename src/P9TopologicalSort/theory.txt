@@ -1,0 +1,85 @@
+Topological Sort – Explained Clearly
+
+Topological sort is an ordering of the vertices (nodes) in a Directed Acyclic Graph (DAG) such that for every directed edge u → v, vertex u comes before v in the ordering.
+
+Key points:
+1. Graph type: Works only on Directed Acyclic Graphs (DAGs) — graphs with directed edges and no cycles.
+2. Purpose: Used to schedule tasks, order instructions, resolve dependencies, etc.
+3. Meaning: If task A depends on task B, then B must come before A.
+
+Real-world examples:
+- Course prerequisites: You must take "Math 101" before "Math 102".
+- Build systems: Compile source files in the correct order.
+- Task scheduling: Jobs that depend on others being finished first.
+
+Algorithms to perform Topological Sort:
+
+1. Kahn’s Algorithm (BFS-based):
+- Track in-degrees (number of incoming edges).
+- Start with nodes with in-degree = 0.
+- Remove them, update neighbors, and repeat.
+
+2. DFS-based Topological Sort:
+- Perform a DFS.
+- Once a node finishes exploring, push it to a stack.
+- Reverse the stack to get the ordering.
+
+Example:
+
+Graph edges:
+A → B
+A → C
+B → D
+C → D
+
+A valid topological sort:
+A, B, C, D
+or
+A, C, B, D
+
+Important:
+- Multiple valid topological orders can exist.
+- If there's a cycle, a topological sort is not possible.
+
+Where Topological Sort is Used in the Real World
+
+Topological sorting isn't just a theoretical concept—it’s widely applied in real-world problems where order, dependencies, or priorities matter. Here are some important use cases:
+
+1. Course Scheduling / Academic Planning
+- Problem: Some courses have prerequisites. You can't take "Advanced Programming" until you've completed "Intro to Programming".
+- How it's used: Topological sort helps determine a valid sequence of courses so that prerequisites are completed before dependent courses.
+
+2. Build Systems / Compilation Order
+- Problem: When compiling code, some files depend on others being compiled first.
+- How it's used: A build tool like Make, Gradle, or Maven uses topological sort to compile source files in the correct order.
+
+3. Package Managers
+- Problem: Installing software packages where some packages depend on others.
+- How it's used: Systems like npm, pip, or apt use topological sort to resolve dependencies and install them in the correct order.
+
+4. Task Scheduling
+- Problem: Complex projects have tasks that depend on others being finished first.
+- How it's used: Project management tools like JIRA, Trello, or MS Project use topological sort to schedule tasks ensuring that dependencies are respected.
+
+5. Game Development
+- Problem: Level unlocks or quest dependencies in games.
+- How it's used: Ensures that quests, levels, or achievements are unlocked only after completing prerequisite tasks.
+
+6. Data Pipelines
+- Problem: Data transformations where one step depends on the output of another.
+- How it's used: Tools like Apache Airflow or Prefect use topological sorting to orchestrate workflows.
+
+7. Version Control Systems
+- Problem: Merging branches or commits in a logical sequence.
+- How it's used: Systems like Git may internally process commits based on dependencies between changes.
+
+8. Manufacturing / Assembly Lines
+- Problem: Some components must be assembled before others.
+- How it's used: Production schedules are optimized based on dependencies among assembly steps.
+
+9. Cloud and Microservices
+- Problem: Deploying services where some rely on others.
+- How it's used: Deployment pipelines ensure services start in the right order.
+
+Final takeaway:
+Whenever you need to order tasks, operations, or processes that depend on one another, topological sort helps you figure out a valid sequence without violating dependencies.

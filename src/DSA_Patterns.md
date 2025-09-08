@@ -109,51 +109,6 @@
 - Reorganize String
 
 ---
-## Greedy Algorithms
-
-**Core Idea:** Always choose the local optimal solution hoping it leads to global optimum.
-
-**When to Use:** When you can make a series of decisions greedily.
-
-**Must-Solve Problems:**
-
-- Jump Game
-- Greedy Florist
-- Activity Selection
-- Minimum Number of Arrows to Burst Balloons
-- Candy
-
-# What is a Greedy Algorithm?
-
-A **Greedy Algorithm** builds a solution step-by-step, always choosing the **locally optimal** choice at each step, **hoping** it leads to the **global optimum**.
-
-## Key Points about Greedy:
-- It makes the **best possible decision at the current step** without worrying about future consequences.
-- **Does not backtrack.**
-- Works only when **local optimal choices lead to global optimal solutions** (not always true).
-
-### Examples in real life:
-- Choosing the largest denomination while giving change.
-- Selecting the next closest city in the Traveling Salesman (though not always optimal).
-
-
----
-
-## Binary Search
-
-**Core Idea:** Divide the search space in half each time to find a target efficiently.
-
-**When to Use:** Sorted arrays or when answer lies in a numeric range.
-
-**Must-Solve Problems:**
-
-- Binary Search
-- Search in Rotated Sorted Array
-- Find Minimum in Rotated Sorted Array
-- Koko Eating Bananas
-- Median of Two Sorted Arrays
-
----
 
 ## Topological Sort
 
@@ -168,38 +123,6 @@ A **Greedy Algorithm** builds a solution step-by-step, always choosing the **loc
 - Alien Dictionary
 - Minimum Height Trees
 - Sequence Reconstruction
-
----
-
-## Dynamic Programming (DP)
-
-**Core Idea:** Break problem into overlapping subproblems and use memoization or tabulation.
-
-**When to Use:** When optimal substructure and overlapping subproblems exist.
-
-**Must-Solve Problems:**
-
-- 0/1 Knapsack
-- Longest Increasing Subsequence
-- House Robber
-- Coin Change
-- Edit Distance
-
----
-
-## Bit Manipulation
-
-**Core Idea:** Use bitwise operations for toggling, checking, and optimizing space/time.
-
-**When to Use:** When working with numbers, subsets, or flags using bits.
-
-**Must-Solve Problems:**
-
-- Single Number
-- Counting Bits
-- Missing Number
-- Number of 1 Bits
-- Subsets
 
 ---
 
@@ -264,5 +187,83 @@ A **Greedy Algorithm** builds a solution step-by-step, always choosing the **loc
 - Largest Rectangle in Histogram
 - Trapping Rain Water
 - Sliding Window Maximum
+
+---
+
+## Greedy Algorithms
+
+**Core Idea:** Always choose the local optimal solution hoping it leads to global optimum.
+
+**When to Use:** When you can make a series of decisions greedily.
+
+**Must-Solve Problems:**
+
+- Jump Game
+- Greedy Florist
+- Activity Selection
+- Minimum Number of Arrows to Burst Balloons
+- Candy
+
+# What is a Greedy Algorithm?
+
+A **Greedy Algorithm** builds a solution step-by-step, always choosing the **locally optimal** choice at each step, **hoping** it leads to the **global optimum**.
+
+## Key Points about Greedy:
+- It makes the **best possible decision at the current step** without worrying about future consequences.
+- **Does not backtrack.**
+- Works only when **local optimal choices lead to global optimal solutions** (not always true).
+
+### Examples in real life:
+- Choosing the largest denomination while giving change.
+- Selecting the next closest city in the Traveling Salesman (though not always optimal).
+
+
+---
+
+## Binary Search
+
+**Core Idea:** Divide the search space in half each time to find a target efficiently.
+
+**When to Use:** Sorted arrays or when answer lies in a numeric range.
+
+**Must-Solve Problems:**
+
+- Binary Search
+- Search in Rotated Sorted Array
+- Find Minimum in Rotated Sorted Array
+- Koko Eating Bananas
+- Median of Two Sorted Arrays
+
+---
+
+## Dynamic Programming (DP)
+
+**Core Idea:** Break problem into overlapping subproblems and use memoization or tabulation.
+
+**When to Use:** When optimal substructure and overlapping subproblems exist.
+
+**Must-Solve Problems:**
+
+- 0/1 Knapsack
+- Longest Increasing Subsequence
+- House Robber
+- Coin Change
+- Edit Distance
+
+---
+
+## Bit Manipulation
+
+**Core Idea:** Use bitwise operations for toggling, checking, and optimizing space/time.
+
+**When to Use:** When working with numbers, subsets, or flags using bits.
+
+**Must-Solve Problems:**
+
+- Single Number
+- Counting Bits
+- Missing Number
+- Number of 1 Bits
+- Subsets
 
 ---
