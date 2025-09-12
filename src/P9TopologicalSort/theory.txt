@@ -15,9 +15,13 @@ Real-world examples:
 Algorithms to perform Topological Sort:
 
 1. Kahn’s Algorithm (BFS-based):
-- Track in-degrees (number of incoming edges).
-- Start with nodes with in-degree = 0.
-- Remove them, update neighbors, and repeat.
+- Calculate the in-degree (number of incoming edges) for each node in the graph.
+- Initialize a queue and add all nodes with in-degree = 0 (these have no dependencies).
+- While the queue is not empty:
+    - Remove a node from the queue and add it to the topological order.
+    - For each neighbor of this node, decrease its in-degree by 1.
+    - If any neighbor’s in-degree becomes 0, add it to the queue.
+- Repeat until the queue is empty. If all nodes are processed, a valid topological order exists; otherwise, the graph has a cycle.
 
 2. DFS-based Topological Sort:
 - Perform a DFS.
