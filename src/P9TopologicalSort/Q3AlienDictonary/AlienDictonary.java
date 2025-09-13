@@ -33,28 +33,7 @@ public class AlienDictonary {
     Map<Character, Integer> indegree = new HashMap<>();
     Map<Character, List<Character>> adjacencyMap = new HashMap<>();
     createGraph(words, indegree, adjacencyMap);
-    Queue<Character> queue = new LinkedList<>();
-    StringBuilder result = new StringBuilder();
-    for (Map.Entry<Character, Integer> entry : indegree.entrySet()) {
-      if (entry.getValue() == 0) {
-        queue.add(entry.getKey());
-        result.append(entry.getKey());
-      }
-    }
-
-    while (!queue.isEmpty()) {
-      Character character = queue.poll();
-      if (adjacencyMap.containsKey(character)) {
-        for (Character neighbour : adjacencyMap.get(character)) {
-          indegree.put(neighbour, indegree.get(neighbour) - 1);
-          if (indegree.get(neighbour) == 0) {
-            queue.add(neighbour);
-            result.append(neighbour);
-          }
-        }
-      }
-    }
-    return result.toString();
+    return topologicalSort(indegree, adjacencyMap);
   }
 
   private void createGraph(
@@ -62,10 +41,25 @@ public class AlienDictonary {
     Map<Character, Integer> indegree,
     Map<Character, List<Character>> adjacencyMap
   ) {
+    // Initialize all unique characters
+    for (String word : words) {
+      for (char c : word.toCharArray()) {
+        indegree.putIfAbsent(c, 0);
+        adjacencyMap.putIfAbsent(c, new ArrayList<>());
+      }
+    }
+
     for (int i = 0; i < words.length - 1; i++) {
       String str1 = words[i];
       String str2 = words[i + 1];
       int str1Ptr = 0, str2Ptr = 0;
+
+      // Check invalid case: prefix issue
+      if (str1.length() > str2.length() && str1.startsWith(str2)) {
+        indegree.clear(); // Mark invalid state
+        return;
+      }
+
       while (str1.charAt(str1Ptr) == str2.charAt(str2Ptr)) {
         str1Ptr++;
         str2Ptr++;
@@ -76,6 +70,35 @@ public class AlienDictonary {
       characters.add(str2.charAt(str2Ptr));
       adjacencyMap.put(str1.charAt(str1Ptr), characters);
     }
+  }
+
+  private String topologicalSort(Map<Character, Integer> indegree, Map<Character, List<Character>> adjacencyMap) {
+    Queue<Character> queue = new LinkedList<>();
+    StringBuilder result = new StringBuilder();
+    for (Map.Entry<Character, Integer> entry : indegree.entrySet()) {
+      if (entry.getValue() == 0) {
+        queue.add(entry.getKey());
+      }
+    }
+
+    while (!queue.isEmpty()) {
+      Character character = queue.poll();
+      result.append(character);
+      for (Character neighbour : adjacencyMap.get(character)) {
+        indegree.put(neighbour, indegree.get(neighbour) - 1);
+        if (indegree.get(neighbour) == 0) {
+          queue.add(neighbour);
+        }
+      }
+    }
+    // If topological sort includes all characters, return result
+    if (result.length() == indegree.size()) {
+      return result.toString();
+    }
+    else {
+      return ""; // Cycle or incomplete graph
+    }
+
   }
 
   public static void main(String[] args) {
