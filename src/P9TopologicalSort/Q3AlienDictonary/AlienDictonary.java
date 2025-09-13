@@ -2,8 +2,10 @@ package P9TopologicalSort.Q3AlienDictonary;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 
 /**
  * ✅ Alien Dictionary – LeetCode Problem Explanation with Cast Example
@@ -31,7 +33,28 @@ public class AlienDictonary {
     Map<Character, Integer> indegree = new HashMap<>();
     Map<Character, List<Character>> adjacencyMap = new HashMap<>();
     createGraph(words, indegree, adjacencyMap);
-    return "";
+    Queue<Character> queue = new LinkedList<>();
+    StringBuilder result = new StringBuilder();
+    for (Map.Entry<Character, Integer> entry : indegree.entrySet()) {
+      if (entry.getValue() == 0) {
+        queue.add(entry.getKey());
+        result.append(entry.getKey());
+      }
+    }
+
+    while (!queue.isEmpty()) {
+      Character character = queue.poll();
+      if (adjacencyMap.containsKey(character)) {
+        for (Character neighbour : adjacencyMap.get(character)) {
+          indegree.put(neighbour, indegree.get(neighbour) - 1);
+          if (indegree.get(neighbour) == 0) {
+            queue.add(neighbour);
+            result.append(neighbour);
+          }
+        }
+      }
+    }
+    return result.toString();
   }
 
   private void createGraph(
@@ -58,6 +81,6 @@ public class AlienDictonary {
   public static void main(String[] args) {
     String[] words = { "wrt", "wrf", "er", "ett", "rftt" };
     AlienDictonary alienDictonary = new AlienDictonary();
-    alienDictonary.alienOrder(words);
+    System.out.println(alienDictonary.alienOrder(words));
   }
 }
