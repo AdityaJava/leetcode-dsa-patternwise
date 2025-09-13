@@ -30,7 +30,8 @@ public class AlienDictonary {
   public String alienOrder(String[] words) {
     Map<Character, Integer> indegree = new HashMap<>();
     Map<Character, List<Character>> adjacencyMap = new HashMap<>();
-
+    createGraph(words, indegree, adjacencyMap);
+    return "";
   }
 
   private void createGraph(
@@ -47,6 +48,7 @@ public class AlienDictonary {
         str2Ptr++;
       }
       indegree.put(str2.charAt(str2Ptr), indegree.getOrDefault(str2.charAt(str2Ptr), 0) + 1);
+      indegree.computeIfAbsent(str1.charAt(str1Ptr), k -> 0);
       List<Character> characters = adjacencyMap.getOrDefault(str1.charAt(str1Ptr), new ArrayList<>());
       characters.add(str2.charAt(str2Ptr));
       adjacencyMap.put(str1.charAt(str1Ptr), characters);
@@ -54,6 +56,8 @@ public class AlienDictonary {
   }
 
   public static void main(String[] args) {
-
+    String[] words = { "wrt", "wrf", "er", "ett", "rftt" };
+    AlienDictonary alienDictonary = new AlienDictonary();
+    alienDictonary.alienOrder(words);
   }
 }
