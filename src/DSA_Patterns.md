@@ -165,13 +165,27 @@
 **When to Use:** When frequent range sum queries or subarray sums are involved.
 
 **Must-Solve Problems:**
-
+- Maximum difference with constraints
+- Best Time to Buy and Sell Stock 1,2,3
+- Trapping Rain Water
+- Product of Array Except Self
 - Subarray Sum Equals K
-- Range Sum Query - Immutable
+- Subarray Sums Divisible by K
+- Range Sum Query - Immutable  formula prefix[right + 1] - prefix[left]
 - Minimum Size Subarray Sum
 - Maximum Size Subarray Sum Equals K
 - Binary Subarrays With Sum
 
+Product except self: use prefix and suffix products.
+- Trapping rain water: use prefix max and suffix max to find water above each bar.
+- Maximum Difference with Constraints
+- Best time to buy and sell stock: use prefix min to track lowest price up to each day.
+- Best time to buy and sell stock with cooldown: use prefix max to track best profit up to each day.
+- Best time to buy and sell stock II: use prefix max to accumulate profits from every upward slope.
+- Best time to buy and sell stock III: use two prefix max arrays to track profits from two transactions.
+- Best time to buy and sell stock IV: DP + prefix max to optimize multiple transactions.
+- Longest mountain in array: use prefix max and suffix max to find peaks.
+- Sliding window maximum: use deque + prefix max to maintain max in current window.
 ---
 
 ## Monotonic Stack / Queue
