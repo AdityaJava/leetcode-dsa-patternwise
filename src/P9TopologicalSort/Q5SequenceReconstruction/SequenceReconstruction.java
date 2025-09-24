@@ -52,31 +52,34 @@ package P9TopologicalSort.Q5SequenceReconstruction;
  * 🟢 Core Idea
  *
  * You are given:
- *   - A final sequence `nums` → This is like the "answer key".
- *   - A bunch of subsequences `sequences` → These are hints about the order.
+ * - A final sequence `nums` → This is like the "answer key".
+ * - A bunch of subsequences `sequences` → These are hints about the order.
  *
  * 👉 Task:
- *   Check if these subsequences are enough to uniquely reconstruct the original sequence `nums`.
+ * Check if these subsequences are enough to uniquely reconstruct the original sequence `nums`.
  *
  * 🧩 Example 1:
- *   nums = [1,2,3], sequences = [[1,2],[1,3]]
- *   - [1,2] → 1 comes before 2
- *   - [1,3] → 1 comes before 3
- *   - But nothing says whether 2 comes before 3 or 3 before 2
- *   - Possible valid orders: [1,2,3] and [1,3,2]
- *   ✅ Since not unique → return false
+ * nums = [1,2,3], sequences = [[1,2],[1,3]]
+ * - [1,2] → 1 comes before 2
+ * - [1,3] → 1 comes before 3
+ * - But nothing says whether 2 comes before 3 or 3 before 2
+ * - Possible valid orders: [1,2,3] and [1,3,2]
+ * ✅ Since not unique → return false
  *
  * 🧩 Example 2:
- *   nums = [1,2,3], sequences = [[1,2],[1,3],[2,3]]
- *   - [1,2] → 1 before 2
- *   - [1,3] → 1 before 3
- *   - [2,3] → 2 before 3
- *   - All relations covered → only valid order is [1,2,3]
- *   ✅ Matches nums → return true
+ * nums = [1,2,3], sequences = [[1,2],[1,3],[2,3]]
+ * - [1,2] → 1 before 2
+ * - [1,3] → 1 before 3
+ * - [2,3] → 2 before 3
+ * - All relations covered → only valid order is [1,2,3]
+ * ✅ Matches nums → return true
  *
  * 🟠 What the problem is really asking:
- *   1) Is there exactly ONE valid ordering? (unique topological sort)
- *        - If multiple orders exist → return f*
+ * 1) Is there exactly ONE valid ordering? (unique topological sort)
+ * - If multiple orders exist → return false
  **/
 public class SequenceReconstruction {
+  public static void main(String[] args) {
+
+  }
 }
