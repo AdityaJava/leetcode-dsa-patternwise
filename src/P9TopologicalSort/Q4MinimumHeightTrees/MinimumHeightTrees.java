@@ -22,7 +22,7 @@ public class MinimumHeightTrees {
     Queue<Integer> queue = new LinkedList<>();
     int numberOfNodes = n;
     for (Map.Entry<Integer, Integer> entry : degrees.entrySet()) {
-      if (entry.getValue() == 1) {
+      if (entry.getValue() <= 1) {
         queue.add(entry.getKey());
       }
     }
@@ -68,10 +68,12 @@ public class MinimumHeightTrees {
   }
 
   public static void main(String[] args) {
-    int n = 6;
-    int[][] edges = {
-      { 3, 0 }, { 3, 1 }, { 3, 2 }, { 3, 4 }, { 5, 4 }
-    };
+    //    int n = 6;
+    //    int[][] edges = {
+    //      { 3, 0 }, { 3, 1 }, { 3, 2 }, { 3, 4 }, { 5, 4 }
+    //    };
+    int n = 1;
+    int[][] edges = {};
     MinimumHeightTrees minimumHeightTrees = new MinimumHeightTrees();
     minimumHeightTrees.findMinHeightTrees(n, edges).forEach(System.out::println);
   }
