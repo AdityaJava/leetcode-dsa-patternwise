@@ -186,6 +186,7 @@ Product except self: use prefix and suffix products.
 - Best time to buy and sell stock IV: DP + prefix max to optimize multiple transactions.
 - Longest mountain in array: use prefix max and suffix max to find peaks.
 - Sliding window maximum: use deque + prefix max to maintain max in current window.
+
 ---
 
 ## Monotonic Stack / Queue
