@@ -78,6 +78,22 @@
 
 ---
 
+## Dynamic Programming (DP)
+
+**Core Idea:** Break problem into overlapping subproblems and use memoization or tabulation.
+
+**When to Use:** When optimal substructure and overlapping subproblems exist.
+
+**Must-Solve Problems:**
+
+- 0/1 Knapsack
+- Longest Increasing Subsequence
+- House Robber
+- Coin Change
+- Edit Distance
+
+---
+
 ## Backtracking
 
 **Core Idea:** Build solution step-by-step, undoing choices when needed.
@@ -249,21 +265,6 @@ A **Greedy Algorithm** builds a solution step-by-step, always choosing the **loc
 - Koko Eating Bananas
 - Median of Two Sorted Arrays
 
----
-
-## Dynamic Programming (DP)
-
-**Core Idea:** Break problem into overlapping subproblems and use memoization or tabulation.
-
-**When to Use:** When optimal substructure and overlapping subproblems exist.
-
-**Must-Solve Problems:**
-
-- 0/1 Knapsack
-- Longest Increasing Subsequence
-- House Robber
-- Coin Change
-- Edit Distance
 
 ---
 

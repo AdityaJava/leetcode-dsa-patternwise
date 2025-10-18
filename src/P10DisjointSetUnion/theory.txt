@@ -1,0 +1,110 @@
+# Union-Find (Disjoint Set Union – DSU)
+
+1. Core Idea
+- Maintain disjoint sets.
+- Each element has a representative (root).
+- Operations:
+  - Find(x) → return root of x’s set
+  - Union(x, y) → merge sets of x and y
+
+2. Why Needed
+- Fast connectivity queries on dynamic sets.
+- Naïve DFS/BFS per query is O(N) → slow.
+- Union-Find answers in nearly O(1) with optimizations.
+
+3. Union by Rank
+- Merge smaller tree under larger to avoid tall chains.
+- Use rank[] array to track approximate tree height.
+
+4. Path Compression
+- Flatten tree during find(x).
+- All nodes on the path point directly to root.
+
+Example:
+
+Before find(4):
+0
+|
+1
+|
+2
+|
+3
+|
+4
+
+After path compression:
+    0
+ / | | \
+1  2  3  4
+
+5. Java Implementation
+class UnionFind {
+    private int[] parent;
+    private int[] rank;
+
+    public UnionFind(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+            rank[i] = 1;
+        }
+    }
+
+    public int find(int x) {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x]); // path compression
+        }
+        return parent[x];
+    }
+
+    public void union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+        if (rootX == rootY) return;
+
+        if (rank[rootX] < rank[rootY]) {
+            parent[rootX] = rootY;
+        } else if (rank[rootX] > rank[rootY]) {
+            parent[rootY] = rootX;
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+    }
+
+    public boolean connected(int x, int y) {
+        return find(x) == find(y);
+    }
+}
+
+6. Dry Run Example
+
+Initial (n=5)
+parent = [0, 1, 2, 3, 4]
+rank   = [1, 1, 1, 1, 1]
+
+union(0,1) → attach 1 → 0
+parent = [0, 0, 2, 3, 4]
+rank   = [2, 1, 1, 1, 1]
+
+union(2,3) → attach 3 → 2
+parent = [0, 0, 2, 2, 4]
+rank   = [2, 1, 2, 1, 1]
+
+union(1,3) → find(1)=0, find(3)=2 → attach 2 → 0
+parent = [0, 0, 0, 2, 4]
+rank   = [3, 1, 2, 1, 1]
+
+Path compression: find(3) → parent[3]=0
+parent = [0, 0, 0, 0, 4]
+rank   = [3, 1, 2, 1, 1]
+
+Sets: {0,1,2,3}, {4}
+
+7. Where Used
+- Cycle detection in graphs
+- Kruskal’s MST
+- Dynamic connectivity queries
+- Clustering / grouping problems
