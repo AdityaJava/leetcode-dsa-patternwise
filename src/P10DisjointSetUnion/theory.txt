@@ -108,3 +108,5 @@ Sets: {0,1,2,3}, {4}
 - Kruskal’s MST
 - Dynamic connectivity queries
 - Clustering / grouping problems
+
+8. Disjoint set Time COmplexity is Big Oh of(4*alpha) => bigOh(Constant)
