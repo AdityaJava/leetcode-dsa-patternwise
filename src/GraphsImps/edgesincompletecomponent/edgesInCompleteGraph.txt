@@ -1,0 +1,8 @@
+A complete component means a group of connected nodes where every node is directly connected to every other node.
+
+or even shorter:
+
+A complete component is a part of the graph that itself forms a complete graph.
+
+
+edgesInCompleteComponent= (numberOfNodes×(numberOfNodes−1))/2

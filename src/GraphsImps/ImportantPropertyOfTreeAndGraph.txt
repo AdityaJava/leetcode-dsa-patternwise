@@ -1,0 +1,16 @@
+Tree Property
+
+For a graph with n nodes:
+
+A tree is a connected and acyclic graph.
+
+Therefore, a tree must have exactly n - 1 edges.
+
+If:
+
+Edges < n - 1 → Graph is disconnected (not all nodes connected).
+
+Edges > n - 1 → Graph has a cycle (too many connections).
+
+So before doing any cycle or connectivity check,
+👉 we can immediately reject the graph if edges.length != n - 1.
