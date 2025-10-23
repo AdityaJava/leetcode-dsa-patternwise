@@ -1,5 +1,3 @@
-
-
 @FunctionalInterface
 interface MyFunctional<T> {
   T apply(T a, T b);
