@@ -2,8 +2,10 @@ package P10DisjointSetUnion.Q2NumberOfConnectedComponents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 //https://leetcode.com/problems/count-the-number-of-complete-components/
@@ -51,20 +53,24 @@ class DisjointSet {
 
   public int getCompleteComponents(int[][] edges, int n) {
     int completeComponents = 0;
-    List<Integer> uniqueParents = parentList.stream().distinct().collect(Collectors.toList());
     Map<Integer, Integer> parentToEdgeCount = new HashMap<>();
     for (int[] edge : edges) {
       int parent = findUltimateParent(edge[0]);
       parentToEdgeCount.put(parent, parentToEdgeCount.getOrDefault(parent, 0) + 1);
     }
-    for (Integer parent : uniqueParents) {
-      int size = sizeList.get(parent);
-      int edgeCount = parentToEdgeCount.containsKey(parent) ? parentToEdgeCount.get(parent) : 1;
+    Set<Integer> visited = new HashSet<>();
+    for (int i = 0; i < n; i++) {
+      int parent = findUltimateParent(i);
+      if (!visited.contains(parent)) {
+        int size = sizeList.get(parent);
+        int edgeCount = parentToEdgeCount.containsKey(parent) ? parentToEdgeCount.get(parent) : 1;
+        visited.add(parent);
 
-      // * edgesInCompleteComponent= (numberOfNodes×(numberOfNodes−1))/2
-      boolean condition = size != 1 ? (size * (size - 1)) / 2 == edgeCount : true;
-      if (condition) {
-        completeComponents++;
+        // * edgesInCompleteComponent= (numberOfNodes×(numberOfNodes−1))/2
+        boolean condition = size != 1 ? (size * (size - 1)) / 2 == edgeCount : true;
+        if (condition) {
+          completeComponents++;
+        }
       }
     }
     return completeComponents;
@@ -84,10 +90,10 @@ public class NumberOfCompleteConnectedComponents {
   }
 
   public static void main(String[] args) {
-    //    int n = 6;
-    //    int[][] edges = {
-    //      { 0, 1 }, { 0, 2 }, { 1, 2 }, { 3, 4 }, { 3, 5 }
-    //    };
+    int n = 6;
+    int[][] edges = {
+      { 0, 1 }, { 0, 2 }, { 1, 2 }, { 3, 4 }, { 3, 5 }
+    };
 
     //    int n = 6;
     //
@@ -95,8 +101,8 @@ public class NumberOfCompleteConnectedComponents {
     //      { 0, 1 }, { 0, 2 }, { 1, 2 }, { 3, 4 }
     //    };
 
-    int n = 4;
-    int[][] edges = { { 2, 0 }, { 3, 1 }, { 3, 2 } };
+    //    int n = 4;
+    //    int[][] edges = { { 2, 0 }, { 3, 1 }, { 3, 2 } };
     NumberOfCompleteConnectedComponents connectedComponents = new NumberOfCompleteConnectedComponents();
     System.out.println(connectedComponents.countCompleteComponents(n, edges));
 
