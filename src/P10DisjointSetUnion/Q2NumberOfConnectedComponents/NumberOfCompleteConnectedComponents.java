@@ -67,6 +67,7 @@ class DisjointSet {
         visited.add(parent);
 
         // * edgesInCompleteComponent= (numberOfNodes×(numberOfNodes−1))/2
+        //        A complete component means a group of connected nodes where every node is directly connected to every other node.
         boolean condition = size != 1 ? (size * (size - 1)) / 2 == edgeCount : true;
         if (condition) {
           completeComponents++;
