@@ -14,3 +14,7 @@ public class GenericLambda {
     System.out.println(myFunctional.apply(1, 2));
   }
 }
+
+//FAANG
+
+// Attlassian Amazon

@@ -1,34 +1,36 @@
 package P10DisjointSetUnion.Q2NumberOfConnectedComponents;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 //https://leetcode.com/problems/count-the-number-of-complete-components/
 
 
 /**
  * edgesInCompleteComponent= (numberOfNodes×(numberOfNodes−1))/2
- *
  */
 
 class DisjointSet {
-  List<Integer> parent;
-  List<Integer> size;
+  List<Integer> parentList;
+  List<Integer> sizeList;
 
   public DisjointSet(int n) {
-    parent = new ArrayList<>();
-    size = new ArrayList<>();
+    parentList = new ArrayList<>();
+    sizeList = new ArrayList<>();
     for (int i = 0; i < n; i++) {
-      parent.add(i);
-      size.add(1);
+      parentList.add(i);
+      sizeList.add(1);
     }
   }
 
   public int findUltimateParent(int x) {
-    if (parent.get(x) != x) {
-      parent.set(x, findUltimateParent(parent.get(x)));
+    if (parentList.get(x) != x) {
+      parentList.set(x, findUltimateParent(parentList.get(x)));
     }
-    return parent.get(x);
+    return parentList.get(x);
   }
 
   public void unionBySize(int x, int y) {
@@ -37,18 +39,35 @@ class DisjointSet {
     if (ultimateParentOfX == ultimateParentOfY) {
       return;
     }
-    if (size.get(ultimateParentOfX) > size.get(ultimateParentOfY)) {
-      parent.set(ultimateParentOfY, ultimateParentOfX);
-      size.set(ultimateParentOfX, size.get(ultimateParentOfX) + size.get(ultimateParentOfY));
+    if (sizeList.get(ultimateParentOfX) > sizeList.get(ultimateParentOfY)) {
+      parentList.set(ultimateParentOfY, ultimateParentOfX);
+      sizeList.set(ultimateParentOfX, sizeList.get(ultimateParentOfX) + sizeList.get(ultimateParentOfY));
     }
     else {
-      parent.set(ultimateParentOfX, ultimateParentOfY);
-      size.set(ultimateParentOfY, size.get(ultimateParentOfX) + size.get(ultimateParentOfY));
+      parentList.set(ultimateParentOfX, ultimateParentOfY);
+      sizeList.set(ultimateParentOfY, sizeList.get(ultimateParentOfX) + sizeList.get(ultimateParentOfY));
     }
   }
 
-  public int getCompleteComponents() {
-    return (int) parent.stream().distinct().count();
+  public int getCompleteComponents(int[][] edges, int n) {
+    int completeComponents = 0;
+    List<Integer> uniqueParents = parentList.stream().distinct().collect(Collectors.toList());
+    Map<Integer, Integer> parentToEdgeCount = new HashMap<>();
+    for (int[] edge : edges) {
+      int parent = findUltimateParent(edge[0]);
+      parentToEdgeCount.put(parent, parentToEdgeCount.getOrDefault(parent, 0) + 1);
+    }
+    for (Integer parent : uniqueParents) {
+      int size = sizeList.get(parent);
+      int edgeCount = parentToEdgeCount.containsKey(parent) ? parentToEdgeCount.get(parent) : 1;
+
+      // * edgesInCompleteComponent= (numberOfNodes×(numberOfNodes−1))/2
+      boolean condition = size != 1 ? (size * (size - 1)) / 2 == edgeCount : true;
+      if (condition) {
+        completeComponents++;
+      }
+    }
+    return completeComponents;
   }
 
 }
@@ -61,14 +80,23 @@ public class NumberOfCompleteConnectedComponents {
     for (int[] edge : edges) {
       disjointSet.unionBySize(edge[0], edge[1]);
     }
-    return disjointSet.getCompleteComponents();
+    return disjointSet.getCompleteComponents(edges, n);
   }
 
   public static void main(String[] args) {
-    int n = 6;
-    int[][] edges = {
-      { 0, 1 }, { 0, 2 }, { 1, 2 }, { 3, 4 }
-    };
+    //    int n = 6;
+    //    int[][] edges = {
+    //      { 0, 1 }, { 0, 2 }, { 1, 2 }, { 3, 4 }, { 3, 5 }
+    //    };
+
+    //    int n = 6;
+    //
+    //    int[][] edges = {
+    //      { 0, 1 }, { 0, 2 }, { 1, 2 }, { 3, 4 }
+    //    };
+
+    int n = 4;
+    int[][] edges = { { 2, 0 }, { 3, 1 }, { 3, 2 } };
     NumberOfCompleteConnectedComponents connectedComponents = new NumberOfCompleteConnectedComponents();
     System.out.println(connectedComponents.countCompleteComponents(n, edges));
 
