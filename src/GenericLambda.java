@@ -7,7 +7,6 @@ interface MyFunctional<T> {
 public class GenericLambda {
   public static void main(String[] args) {
     Integer result = ((MyFunctional<Integer>) (a, b) -> a + b).apply(10, 20);
-
   }
 
   public static void myFunc(MyFunctional myFunctional) {
