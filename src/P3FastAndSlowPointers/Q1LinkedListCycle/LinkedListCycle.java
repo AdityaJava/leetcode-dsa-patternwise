@@ -6,14 +6,14 @@ public class LinkedListCycle {
   public ListNode detectCycle(ListNode head) {
     ListNode slow = head, fast = head;
     boolean cycleExists = false;
-    while (fast != null && fast.next != null) {
-      slow = slow.next;
-      fast = fast.next.next;
-      if (slow == fast) {
-        cycleExists = true;
-        break;
-      }
-    }
+        while (fast != null && fast.next != null) {
+          slow = slow.next;
+          fast = fast.next.next;
+          if (slow == fast) {
+            cycleExists = true;
+            break;
+          }
+        }
     if (cycleExists) {
       fast = head;
       while (fast != slow) {
